@@ -38,9 +38,5 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_mysql_port"></a> [mysql\_port](#output\_mysql\_port) | n/a |
-| <a name="output_mysql_primary_endpoint"></a> [mysql\_primary\_endpoint](#output\_mysql\_primary\_endpoint) | n/a |
-| <a name="output_mysql_primary_headless_endpoint"></a> [mysql\_primary\_headless\_endpoint](#output\_mysql\_primary\_headless\_endpoint) | n/a |
-| <a name="output_mysql_secondary_endpoint"></a> [mysql\_secondary\_endpoint](#output\_mysql\_secondary\_endpoint) | n/a |
-| <a name="output_mysql_secondary_headless_endpoint"></a> [mysql\_secondary\_headless\_endpoint](#output\_mysql\_secondary\_headless\_endpoint) | n/a |
+| <a name="output_mysql_configuration"></a> [mysql\_configuration](#output\_mysql\_configuration) | mysql\_Info |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
