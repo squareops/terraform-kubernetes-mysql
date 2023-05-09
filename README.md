@@ -51,7 +51,7 @@ The required IAM permissions to create resources from this module can be found [
 
 ## Supported Versions Table:
 
-|  Mysql Helm Chart Version    |     K8s supported version   |      
+|  MysqlDB Helm Chart Version    |     K8s supported version   |      
 | :-----:                       |         :---                | 
 | **9.2.0**                     |    1.23,1.24,1.25           |
 

@@ -9,7 +9,7 @@ This example will be very useful for users who are new to a module and want to q
 
 ## Supported Versions Table:
 
-|  Mysql Helm Chart Version    |     K8s supported version   |      
+|  MysqlDB Helm Chart Version    |     K8s supported version   |      
 | :-----:                       |         :---                | 
 | **9.2.0**                     |    1.23,1.24,1.25           |
 
