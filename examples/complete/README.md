@@ -21,7 +21,7 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_mysql"></a> [mysql](#module\_mysql) | ../../ | n/a |
+| <a name="module_mysql"></a> [mysql](#module\_mysql) | https://github.com/sq-ia/terraform-kubernetes-mysql.git | n/a |
 
 ## Resources
 
@@ -38,5 +38,5 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_mysql_configuration"></a> [mysql\_configuration](#output\_mysql\_configuration) | mysql\_Info |
+| <a name="output_mysql_configuration"></a> [mysql\_configuration](#output\_mysql\_configuration) | Mysql\_Info |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
