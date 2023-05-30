@@ -18,7 +18,7 @@ This module allows you to easily deploy a MySQL database on Kubernetes using Hel
 
 ```hcl
 module "mysql" {
-  source                   = "https://github.com/sq-ia/terraform-kubernetes-mysql.git"
+  source                   = "squareops/mysql/kubernetes"
   cluster_name             = "dev-cluster"
   mysqldb_config = {
     name                       = "skaf"
@@ -47,10 +47,10 @@ module "mysql" {
 
 
 ```
-Refer [examples](https://github.com/sq-ia/terraform-kubernetes-mysql/tree/main/examples/complete) for more details.
+Refer [examples](https://github.com/squareops/terraform-kubernetes-mysql/tree/main/examples/complete) for more details.
 
 ## IAM Permissions
-The required IAM permissions to create resources from this module can be found [here](https://github.com/sq-ia/terraform-kubernetes-mysql/blob/main/IAM.md)
+The required IAM permissions to create resources from this module can be found [here](https://github.com/squareops/terraform-kubernetes-mysql/blob/main/IAM.md)
 
 ## Important Notes
   1. In order to enable the exporter, it is required to deploy Prometheus/Grafana first.
@@ -126,7 +126,7 @@ No modules.
 
 To report an issue with a project:
 
-  1. Check the repository's [issue tracker](https://github.com/sq-ia/terraform-kubernetes-mysql/issues) on GitHub
+  1. Check the repository's [issue tracker](https://github.com/squareops/terraform-kubernetes-mysql/issues) on GitHub
   2. Search to see if the issue has already been reported
   3. If you can't find an answer to your question in the documentation or issue tracker, you can ask a question by creating a new issue. Be sure to provide enough context and details so others can understand your problem.
 
@@ -138,7 +138,7 @@ Apache License, Version 2.0, January 2004 (http://www.apache.org/licenses/).
 
 To support a GitHub project by liking it, you can follow these steps:
 
-  1. Visit the repository: Navigate to the [GitHub repository](https://github.com/sq-ia/terraform-kubernetes-mysql).
+  1. Visit the repository: Navigate to the [GitHub repository](https://github.com/squareops/terraform-kubernetes-mysql).
 
   2. Click the "Star" button: On the repository page, you'll see a "Star" button in the upper right corner. Clicking on it will star the repository, indicating your support for the project.
 
