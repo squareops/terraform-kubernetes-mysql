@@ -21,7 +21,7 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_mysql"></a> [mysql](#module\_mysql) | https://github.com/sq-ia/terraform-kubernetes-mysql.git | n/a |
+| <a name="module_mysql"></a> [mysql](#module\_mysql) | squareops/mysql/kubernetes | n/a |
 
 ## Resources
 
