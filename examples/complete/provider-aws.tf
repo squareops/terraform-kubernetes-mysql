@@ -1,4 +1,4 @@
-provider "aws" {
+provider "s3" {
   region = local.region
   default_tags {
     tags = local.additional_tags
