@@ -38,5 +38,6 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_mysql_configuration"></a> [mysql\_configuration](#output\_mysql\_configuration) | Mysql\_Info |
+| <a name="output_mysql_credential"></a> [mysql\_credential](#output\_mysql\_credential) | Mysql\_Info |
+| <a name="output_mysql_endpoints"></a> [mysql\_endpoints](#output\_mysql\_endpoints) | Mysql\_Info |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
