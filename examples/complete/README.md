@@ -38,6 +38,6 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_mysql_credential"></a> [mysql\_credential](#output\_mysql\_credential) | Mysql\_Info |
-| <a name="output_mysql_endpoints"></a> [mysql\_endpoints](#output\_mysql\_endpoints) | Mysql\_Info |
+| <a name="output_mysql_credential"></a> [mysql\_credential](#output\_mysql\_credential) | MySQL credentials used for accessing the MySQL database. |
+| <a name="output_mysql_endpoints"></a> [mysql\_endpoints](#output\_mysql\_endpoints) | MySQL endpoints in the Kubernetes cluster. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
