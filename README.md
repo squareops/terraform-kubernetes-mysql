@@ -5,11 +5,11 @@
 
 ### [SquareOps Technologies](https://squareops.com/) Your DevOps Partner for Accelerating cloud journey.
 <br>
-This module allows you to easily deploy a MySQL database on Kubernetes using Helm. It provides flexible configuration options for the MySQL database, including storage class, database volume sizes, and architecture. In addition, it supports enabling backups and restoring from backups, as well as deploying MySQL database exporters to gather metrics for Grafana. This module is designed to be highly configurable and customizable, and can be easily integrated into your existing Terraform infrastructure code.
+This module allows you to easily deploy a MySQL database on Kubernetes using Helm. It provides flexible configuration options for the MySQL database, including storage class, database volume sizes, and architecture. In addition, it supports enabling backups and restoring from backups, as well as deploying MySQL database exporters to gather metrics for Grafana. This module is designed to be highly configurable and customizable, and can be easily integrated into your existing Terraform infrastructure code. This module provides options to create a new namespace, and to configure recovery windows for AWS Secrets Manager, Azure key vault & GCP secrets manager. With this module, users can easily deploy a highly available MYSQL on AWS EKS, Azure AKS & GCP GKE Kubernetes clusters with the flexibility to customize their configurations according to their needs.
 
 ## Supported Versions:
 
-|  MysqlDB Helm Chart Version    |     K8s supported version   |  
+|  MysqlDB Helm Chart Version    |     K8s supported version (EKS, AKS & GKE)  |  
 | :-----:                       |         :---                |
 | **9.2.0**                     |    **1.23,1.24,1.25,1.26,1.27**           |
 
@@ -60,7 +60,9 @@ module "mysql" {
 
 
 ```
-Refer [examples](https://github.com/squareops/terraform-kubernetes-mysql/tree/main/examples/complete) for more details.
+Refer [AWS examples](https://github.com/squareops/terraform-kubernetes-mysql/tree/main/examples/complete/aws) for more details
+Refer [Azure examples](https://github.com/squareops/terraform-kubernetes-mysql/tree/main/examples/complete/azure) for more details
+Refer [GCP examples](https://github.com/squareops/terraform-kubernetes-mysql/tree/main/examples/complete/gcp) for more details
 
 ## IAM Permissions
 The required IAM permissions to create resources from this module can be found [here](https://github.com/squareops/terraform-kubernetes-mysql/blob/main/IAM.md)
