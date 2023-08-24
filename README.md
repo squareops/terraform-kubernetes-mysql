@@ -5,11 +5,11 @@
 
 ### [SquareOps Technologies](https://squareops.com/) Your DevOps Partner for Accelerating cloud journey.
 <br>
-This module allows you to easily deploy a MySQL database on Kubernetes using Helm. It provides flexible configuration options for the MySQL database, including storage class, database volume sizes, and architecture. In addition, it supports enabling backups and restoring from backups, as well as deploying MySQL database exporters to gather metrics for Grafana. This module is designed to be highly configurable and customizable, and can be easily integrated into your existing Terraform infrastructure code.
+This module allows you to easily deploy a MySQL database on Kubernetes using Helm. It provides flexible configuration options for the MySQL database, including storage class, database volume sizes, and architecture. In addition, it supports enabling backups and restoring from backups, as well as deploying MySQL database exporters to gather metrics for Grafana. This module is designed to be highly configurable and customizable, and can be easily integrated into your existing Terraform infrastructure code. This module provides options to create a new namespace, and to configure recovery windows for AWS Secrets Manager, Azure key vault & GCP secrets manager. With this module, users can easily deploy a highly available MYSQL on AWS EKS, Azure AKS & GCP GKE Kubernetes clusters with the flexibility to customize their configurations according to their needs.
 
 ## Supported Versions:
 
-|  MysqlDB Helm Chart Version    |     K8s supported version   |  
+|  MysqlDB Helm Chart Version    |     K8s supported version (EKS, AKS & GKE)  |  
 | :-----:                       |         :---                |
 | **9.2.0**                     |    **1.23,1.24,1.25,1.26,1.27**           |
 
@@ -60,7 +60,9 @@ module "mysql" {
 
 
 ```
-Refer [examples](https://github.com/squareops/terraform-kubernetes-mysql/tree/main/examples/complete) for more details.
+Refer [AWS examples](https://github.com/squareops/terraform-kubernetes-mysql/tree/main/examples/complete/aws) for more details
+Refer [Azure examples](https://github.com/squareops/terraform-kubernetes-mysql/tree/main/examples/complete/azure) for more details
+Refer [GCP examples](https://github.com/squareops/terraform-kubernetes-mysql/tree/main/examples/complete/gcp) for more details
 
 ## IAM Permissions
 The required IAM permissions to create resources from this module can be found [here](https://github.com/squareops/terraform-kubernetes-mysql/blob/main/IAM.md)
@@ -73,7 +75,7 @@ The required IAM permissions to create resources from this module can be found [
   5. To deploy Prometheus/Grafana, please follow the installation instructions for each tool in their respective documentation.
   6. Once Prometheus and Grafana are deployed, the exporter can be configured to scrape metrics data from your application or system and send it to Prometheus.
   7. Finally, you can use Grafana to create custom dashboards and visualize the metrics data collected by Prometheus.
-  8. This module is compatible with EKS version 1.23,1.24,1.25,1.26 and 1.27, which is great news for users deploying the module on an EKS cluster running that version. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
+  8. This module is compatible with EKS, AKS & GKE which is great news for users deploying the module on an AWS, Azure & GCP cloud. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
