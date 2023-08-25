@@ -18,7 +18,7 @@ This module allows you to easily deploy a MySQL database on Kubernetes using Hel
 
 ```hcl
 module "aws" {
-  source                             = "squareops/mysql/kubernetes//provider/aws"
+  source                             = "squareops/mysql/kubernetes//modules/resources/aws"
   cluster_name                       = "prod-eks"
   environment                        = "prod"
   name                               = "mysql"

@@ -23,7 +23,7 @@ locals {
 }
 
 module "aws" {
-  source                             = "squareops/mysql/kubernetes//provider/aws"
+  source                             = "squareops/mysql/kubernetes//modules/resources/aws"
   cluster_name                       = ""
   environment                        = local.environment
   name                               = local.name
