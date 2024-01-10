@@ -22,7 +22,7 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_aws"></a> [aws](#module\_aws) | squareops/mysql/kubernetes//provider/aws | n/a |
+| <a name="module_aws"></a> [aws](#module\_aws) | squareops/mysql/kubernetes//modules/resources/aws | n/a |
 | <a name="module_mysql"></a> [mysql](#module\_mysql) | squareops/mysql/kubernetes | n/a |
 
 ## Resources
