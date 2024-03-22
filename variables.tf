@@ -45,7 +45,7 @@ variable "app_version" {
 
 variable "chart_version" {
   type        = string
-  default     = "9.2.0"
+  default     = "10.1.0"
   description = "Version of the Mysql chart that will be used to deploy MySQL application."
 }
 
