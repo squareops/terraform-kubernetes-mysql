@@ -39,13 +39,13 @@ variable "mysqldb_custom_credentials_config" {
 
 variable "app_version" {
   type        = string
-  default     = "8.0.29-debian-11-r9"
+  default     = "8.0.36-debian-12-r10"
   description = "Version of the MySQL application that will be deployed."
 }
 
 variable "chart_version" {
   type        = string
-  default     = "9.2.0"
+  default     = "10.1.0"
   description = "Version of the Mysql chart that will be used to deploy MySQL application."
 }
 
