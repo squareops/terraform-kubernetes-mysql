@@ -4,7 +4,7 @@ primary:
             requiredDuringSchedulingIgnoredDuringExecution:
                 nodeSelectorTerms:
                 - matchExpressions:
-                    - key: "Infra-Services"
+                    - key: "Addons-Services"
                       operator: In
                       values:
                       - "true"
@@ -37,7 +37,7 @@ secondary:
             requiredDuringSchedulingIgnoredDuringExecution:
                 nodeSelectorTerms:
                 - matchExpressions:
-                    - key: "Infra-Services"
+                    - key: "Addons-Services"
                       operator: In
                       values:
                       - "true"
@@ -80,7 +80,7 @@ affinity:
         requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-                - key: "Infra-Services"
+                - key: "Addons-Services"
                   operator: In
                   values:
                   - "true"

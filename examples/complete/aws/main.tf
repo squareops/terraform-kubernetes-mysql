@@ -1,15 +1,15 @@
 locals {
   name        = "mysql"
-  region      = "us-east-2"
+  region      = "us-west-2"
   environment = "prod"
-  additional_tags = {
+  additional_aws_tags = {
     Owner      = "organization_name"
     Expires    = "Never"
     Department = "Engineering"
   }
-  create_namespace                   = false
+  create_namespace                   = true
   namespace                          = "mysql"
-  store_password_to_secret_manager   = false
+  store_password_to_secret_manager   = true
   mysqldb_custom_credentials_enabled = true
   mysqldb_custom_credentials_config = {
     root_user            = "root"
@@ -25,8 +25,9 @@ locals {
 }
 
 module "aws" {
-  source                             = "squareops/mysql/kubernetes//modules/resources/aws"
-  cluster_name                       = "cluster-name"
+  # source                             = "squareops/mysql/kubernetes//modules/resources/aws"
+  source                             = "../../../modules/resources/aws"
+  eks_cluster_name                   = ""
   environment                        = local.environment
   name                               = local.name
   namespace                          = local.namespace
@@ -37,13 +38,14 @@ module "aws" {
 }
 
 module "mysql" {
-  source           = "squareops/mysql/kubernetes"
+  # source           = "squareops/mysql/kubernetes"
+  source           = "../../../"
   create_namespace = local.create_namespace
   namespace        = local.namespace
   mysqldb_config = {
     name                             = local.name
     values_yaml                      = file("./helm/values.yaml")
-    app_version                      = "8.0.29-debian-11-r9"
+    app_version                      = "8.0.36-debian-12-r10"
     environment                      = local.environment
     architecture                     = "replication"
     custom_database                  = "test_db"

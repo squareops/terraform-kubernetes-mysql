@@ -9,7 +9,7 @@ locals {
 data "aws_caller_identity" "current" {}
 
 data "aws_eks_cluster" "kubernetes_cluster" {
-  name = var.cluster_name
+  name = var.eks_cluster_name
 }
 
 resource "random_password" "mysqldb_root_password" {
@@ -70,7 +70,7 @@ resource "aws_secretsmanager_secret_version" "mysql_user_password" {
 }
 
 resource "aws_iam_role" "mysql_backup_role" {
-  name = format("%s-%s-%s", var.cluster_name, var.name, "mysql-backup")
+  name = format("%s-%s-%s", var.eks_cluster_name, var.name, "mysql-backup")
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
@@ -113,7 +113,7 @@ resource "aws_iam_role" "mysql_backup_role" {
 
 
 resource "aws_iam_role" "mysql_restore_role" {
-  name = format("%s-%s-%s", var.cluster_name, var.name, "mysql-restore")
+  name = format("%s-%s-%s", var.eks_cluster_name, var.name, "mysql-restore")
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [

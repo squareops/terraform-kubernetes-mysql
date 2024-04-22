@@ -19,6 +19,14 @@ global:
 mysql_metrics_exporter:
   password: ${metrics_exporter_password}
 
+compatibility:
+    ## Compatibility adaptations for Openshift
+    ##
+    openshift:
+      ## @param global.compatibility.openshift.adaptSecurityContext Adapt the securityContext sections of the deployment to make them compatible with Openshift restricted-v2 SCC: remove runAsUser, runAsGroup and fsGroup and let the platform use their allowed default IDs. Possible values: auto (apply if the detected running cluster is Openshift), force (perform the adaptation always), disabled (do not perform adaptation)
+      ##
+      adaptSecurityContext: auto
+
 ## @section Common parameters
 
 ## @param kubeVersion Force target Kubernetes version (using Helm capabilities if not set)
@@ -48,6 +56,9 @@ commonLabels:
 ## @param extraDeploy Array with extra yaml to deploy with the chart. Evaluated as a template
 ##
 extraDeploy: []
+
+serviceBindings:
+  enabled: false
 
 ## Enable diagnostic mode in the deployment
 ##
@@ -189,18 +200,17 @@ primary:
     explicit_defaults_for_timestamp
     basedir=/opt/bitnami/mysql
     plugin_dir=/opt/bitnami/mysql/lib/plugin
-    port=3306
+    port={{ .Values.primary.containerPorts.mysql }}
     socket=/opt/bitnami/mysql/tmp/mysql.sock
     datadir=/bitnami/mysql/data
     tmpdir=/opt/bitnami/mysql/tmp
     max_allowed_packet=16M
-    bind-address=0.0.0.0
+    bind-address=*
     pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
-    log_error=/opt/bitnami/mysql/logs/mysqld.log
+    log-error=/opt/bitnami/mysql/logs/mysqld.log
     character-set-server=UTF8
     collation-server=utf8_general_ci
-    slow_query_log=1
-    slow_query_log_file=/bitnami/mysql/slow-log.log
+    slow_query_log=0
     long_query_time=10.0
 
     [client]
@@ -220,6 +230,8 @@ primary:
   ## @param primary.updateStrategy.type Update strategy type for the MySQL primary statefulset
   ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#update-strategies
   ##
+  containerPorts:
+    mysql: 3306
   updateStrategy:
     type: RollingUpdate
   ## @param primary.podAnnotations Additional pod annotations for MySQL primary pods
@@ -303,6 +315,9 @@ primary:
   ##
   podSecurityContext:
     enabled: true
+    fsGroupChangePolicy: Always
+    sysctls: []
+    supplementalGroups: []
     fsGroup: 1001
   ## MySQL primary container security context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
@@ -312,8 +327,16 @@ primary:
   ##
   containerSecurityContext:
     enabled: true
+    seLinuxOptions: {}
     runAsUser: 1001
+    runAsGroup: 1001
     runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]
+    seccompProfile:
+      type: "RuntimeDefault"
+    readOnlyRootFilesystem: true
   ## MySQL primary container's resource requests and limits
   ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
   ## We usually recommend not to specify default resources and to leave this as a conscious
@@ -584,12 +607,12 @@ secondary:
     datadir=/bitnami/mysql/data
     tmpdir=/opt/bitnami/mysql/tmp
     max_allowed_packet=16M
-    bind-address=0.0.0.0
+    bind-address=*
     pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
-    log_error=/opt/bitnami/mysql/logs/mysqld.log
+    log-error=/opt/bitnami/mysql/logs/mysqld.log
     character-set-server=UTF8
     collation-server=utf8_general_ci
-    slow_query_log=1
+    slow_query_log=0
     slow_query_log_file=/bitnami/mysql/slow-log.log
     long_query_time=10.0
 
@@ -693,8 +716,12 @@ secondary:
   ## @param secondary.podSecurityContext.fsGroup Group ID for the mounted volumes' filesystem
   ##
   podSecurityContext:
-    enabled: true
-    fsGroup: 1001
+      enabled: true
+      fsGroupChangePolicy: Always
+      sysctls: []
+      supplementalGroups: []
+      fsGroup: 1001
+
   ## MySQL secondary container security context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
   ## @param secondary.containerSecurityContext.enabled MySQL secondary container securityContext
@@ -703,8 +730,16 @@ secondary:
   ##
   containerSecurityContext:
     enabled: true
+    seLinuxOptions: {}
     runAsUser: 1001
+    runAsGroup: 1001
     runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]
+    seccompProfile:
+      type: "RuntimeDefault"
+    readOnlyRootFilesystem: true
   ## MySQL secondary container's resource requests and limits
   ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
   ## We usually recommend not to specify default resources and to leave this as a conscious
@@ -953,7 +988,7 @@ serviceAccount:
   annotations: {}
   ## @param serviceAccount.automountServiceAccountToken Automount service account token for the server service account
   ##
-  automountServiceAccountToken: true
+  automountServiceAccountToken: false
 
 ## Role Based Access
 ## ref: https://kubernetes.io/docs/admin/authorization/rbac/
@@ -1022,8 +1057,8 @@ volumePermissions:
   ##
   image:
     registry: docker.io
-    repository: bitnami/bitnami-shell
-    tag: 11-debian-11-r10
+    repository: bitnami/os-shell
+    tag: 12-debian-12-r18
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
     ## Secrets must be manually created in the namespace.
@@ -1054,7 +1089,7 @@ metrics:
   image:
     registry: docker.io
     repository: bitnami/mysqld-exporter
-    tag: 0.14.0-debian-11-r9
+    tag: 0.15.1-debian-12-r10
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
     ## Secrets must be manually created in the namespace.
@@ -1071,6 +1106,22 @@ metrics:
   ## @param metrics.service.port MySQL Prometheus Exporter service port
   ## @param metrics.service.annotations [object] Prometheus exporter service annotations
   ##
+  containerSecurityContext:
+    enabled: true
+    seLinuxOptions: {}
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]
+    seccompProfile:
+      type: "RuntimeDefault"
+    readOnlyRootFilesystem: true
+  ## @param metrics.containerPorts.http Container port for http
+  ##
+  containerPorts:
+    http: 9104
   service:
     type: ClusterIP
     port: 9104
