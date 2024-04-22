@@ -12,6 +12,7 @@ This module allows you to easily deploy a MySQL database on Kubernetes using Hel
 |  MysqlDB Helm Chart Version    |     K8s supported version (EKS, AKS & GKE)  |  
 | :-----:                       |         :---                |
 | **9.2.0**                     |    **1.23,1.24,1.25,1.26,1.27**           |
+| **10.1.0**                     |   **1.23,1.24,1.25,1.26,1.27,1.28,1.29** |
 
 
 ## Usage Example
@@ -185,10 +186,10 @@ No modules.
 | <a name="input_azure_storage_account_key"></a> [azure\_storage\_account\_key](#input\_azure\_storage\_account\_key) | Azure storage account key | `string` | `""` | no |
 | <a name="input_azure_storage_account_name"></a> [azure\_storage\_account\_name](#input\_azure\_storage\_account\_name) | Azure storage account name | `string` | `""` | no |
 | <a name="input_bucket_provider_type"></a> [bucket\_provider\_type](#input\_bucket\_provider\_type) | Choose what type of provider you want (s3, gcs) | `string` | `"gcs"` | no |
-| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Version of the Mysql chart that will be used to deploy MySQL application. | `string` | `"10.1.0"` | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Specifies the name of the EKS cluster to deploy the MySQL application on. | `string` | `""` | no |
 | <a name="input_create_namespace"></a> [create\_namespace](#input\_create\_namespace) | Specify whether or not to create the namespace if it does not already exist. Set it to true to create the namespace. | `string` | `true` | no |
 | <a name="input_custom_user_password"></a> [custom\_user\_password](#input\_custom\_user\_password) | custom user password for MongoDB | `string` | `""` | no |
+| <a name="input_helm_chart_version"></a> [helm\_chart\_version](#input\_helm\_chart\_version) | Version of the Mysql chart that will be used to deploy MySQL application. | `string` | `"10.1.0"` | no |
 | <a name="input_iam_role_arn_backup"></a> [iam\_role\_arn\_backup](#input\_iam\_role\_arn\_backup) | IAM role ARN for backup (AWS) | `string` | `""` | no |
 | <a name="input_iam_role_arn_restore"></a> [iam\_role\_arn\_restore](#input\_iam\_role\_arn\_restore) | IAM role ARN for restore (AWS) | `string` | `""` | no |
 | <a name="input_metric_exporter_pasword"></a> [metric\_exporter\_pasword](#input\_metric\_exporter\_pasword) | Metric exporter password for MongoDB | `string` | `""` | no |

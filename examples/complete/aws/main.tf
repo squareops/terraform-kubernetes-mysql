@@ -2,7 +2,7 @@ locals {
   name        = "mysql"
   region      = "us-west-2"
   environment = "prod"
-  additional_tags = {
+  additional_aws_tags = {
     Owner      = "organization_name"
     Expires    = "Never"
     Department = "Engineering"
@@ -25,8 +25,9 @@ locals {
 }
 
 module "aws" {
-  source                             = "squareops/mysql/kubernetes//modules/resources/aws"
-  cluster_name                       = ""
+  # source                             = "squareops/mysql/kubernetes//modules/resources/aws"
+  source                             = "../../../modules/resources/aws"
+  eks_cluster_name                   = ""
   environment                        = local.environment
   name                               = local.name
   namespace                          = local.namespace
@@ -37,7 +38,8 @@ module "aws" {
 }
 
 module "mysql" {
-  source           = "squareops/mysql/kubernetes"
+  # source           = "squareops/mysql/kubernetes"
+  source           = "../../../"
   create_namespace = local.create_namespace
   namespace        = local.namespace
   mysqldb_config = {

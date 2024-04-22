@@ -43,7 +43,7 @@ variable "app_version" {
   description = "Version of the MySQL application that will be deployed."
 }
 
-variable "chart_version" {
+variable "helm_chart_version" {
   type        = string
   default     = "10.1.0"
   description = "Version of the Mysql chart that will be used to deploy MySQL application."
