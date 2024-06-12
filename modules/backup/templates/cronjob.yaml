@@ -13,7 +13,7 @@ spec:
     spec:
       template:
         spec:
-          affinity: 
+          affinity:
             {{- toYaml .Values.affinity | nindent 12 }}
           restartPolicy: OnFailure
           imagePullSecrets:
@@ -44,5 +44,5 @@ spec:
               value:  "s3"
             - name: AWS_DEFAULT_REGION
               value: {{ .Values.backup.aws_default_region }}
-            resources: 
+            resources:
               {{- toYaml .Values.backupjob.resources | nindent 14 }}

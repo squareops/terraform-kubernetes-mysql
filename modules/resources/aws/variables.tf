@@ -37,7 +37,7 @@ variable "recovery_window_aws_secret" {
   description = "Number of days that AWS Secrets Manager will wait before deleting a secret. This value can be set to 0 to force immediate deletion, or to a value between 7 and 30 days to allow for recovery."
 }
 
-variable "cluster_name" {
+variable "eks_cluster_name" {
   type        = string
   default     = ""
   description = "Specifies the name of the EKS cluster to deploy the MySQL application on."

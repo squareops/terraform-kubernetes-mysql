@@ -10,7 +10,7 @@ resource "helm_release" "mysqldb" {
   depends_on = [kubernetes_namespace.mysqldb]
   name       = "mysqldb"
   chart      = "mysql"
-  version    = var.chart_version
+  version    = var.helm_chart_version
   timeout    = 600
   namespace  = var.namespace
   repository = "https://charts.bitnami.com/bitnami"
