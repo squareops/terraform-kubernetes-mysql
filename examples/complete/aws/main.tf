@@ -7,7 +7,7 @@ locals {
     Expires    = "Never"
     Department = "Engineering"
   }
-  create_namespace                   = false
+  create_namespace                   = true
   namespace                          = "mysql"
   store_password_to_secret_manager   = false
   mysqldb_custom_credentials_enabled = true
@@ -43,7 +43,7 @@ module "mysql" {
   mysqldb_config = {
     name                             = local.name
     values_yaml                      = file("./helm/values.yaml")
-    app_version                      = "8.0.29-debian-11-r9"
+    app_version                      = "8.4.1-debian-12-r1"
     environment                      = local.environment
     architecture                     = "replication"
     custom_database                  = "test_db"
